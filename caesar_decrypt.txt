@@ -1,0 +1,56 @@
+def caesar_cipher_decrypt(ciphertext, shift):
+    result = ""  # Initialize an empty string to hold the decrypted message
+    
+    # Repeat the process for every character in the ciphertext
+    for char in ciphertext:
+        if char.isupper():  # Check if the character is an uppercase letter
+            # Decrypt the character, wrapping around using modulo 26 (number of letters in the alphabet)
+            # 65 is the ASCII value for 'A', which helps in mapping to the correct letter
+            result += chr((ord(char) - shift - 65) % 26 + 65)
+        elif char.islower():  # Check if the character is a lowercase letter
+            # Decrypt the character, wrapping around using modulo 26
+            # 97 is the ASCII value for 'a', used for correct mapping of lowercase letters
+            result += chr((ord(char) - shift - 97) % 26 + 97)
+        else:
+            result += char  # Non-alphabetic characters are added unchanged
+    
+    return result  # Return the fully decrypted message
+
+# Given ciphertext to decrypt
+ciphertext = "Hvs Eiwqy Pfckb Tcl Xiadg Cjsf Hvs Zonm Rcu"
+
+# Try all shift values from 0 to 25 (26 would result in the same encryption)
+for shift in range(0, 26):
+    decrypted_text = caesar_cipher_decrypt(ciphertext, shift)  # Decrypt using the current shift
+    print(f"Shift {shift}: {decrypted_text}")  # Print the result for each shift
+	
+Printed answer is:
+
+Shift 0: Hvs Eiwqy Pfckb Tcl Xiadg Cjsf Hvs Zonm Rcu
+Shift 1: Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt
+Shift 2: Ftq Cguow Ndaiz Raj Vgybe Ahqd Ftq Xmlk Pas
+Shift 3: Esp Bftnv Mczhy Qzi Ufxad Zgpc Esp Wlkj Ozr
+Shift 4: Dro Aesmu Lbygx Pyh Tewzc Yfob Dro Vkji Nyq
+Shift 5: Cqn Zdrlt Kaxfw Oxg Sdvyb Xena Cqn Ujih Mxp
+Shift 6: Bpm Ycqks Jzwev Nwf Rcuxa Wdmz Bpm Tihg Lwo
+Shift 7: Aol Xbpjr Iyvdu Mve Qbtwz Vcly Aol Shgf Kvn
+Shift 8: Znk Waoiq Hxuct Lud Pasvy Ubkx Znk Rgfe Jum
+Shift 9: Ymj Vznhp Gwtbs Ktc Ozrux Tajw Ymj Qfed Itl
+Shift 10: Xli Uymgo Fvsar Jsb Nyqtw Sziv Xli Pedc Hsk
+Shift 11: Wkh Txlfn Eurzq Ira Mxpsv Ryhu Wkh Odcb Grj
+Shift 12: Vjg Swkem Dtqyp Hqz Lworu Qxgt Vjg Ncba Fqi
+Shift 13: Uif Rvjdl Cspxo Gpy Kvnqt Pwfs Uif Mbaz Eph
+Shift 14: The Quick Brown Fox Jumps Over The Lazy Dog   <<---
+Shift 15: Sgd Pthbj Aqnvm Enw Itlor Nudq Sgd Kzyx Cnf
+Shift 16: Rfc Osgai Zpmul Dmv Hsknq Mtcp Rfc Jyxw Bme
+Shift 17: Qeb Nrfzh Yoltk Clu Grjmp Lsbo Qeb Ixwv Ald
+Shift 18: Pda Mqeyg Xnksj Bkt Fqilo Kran Pda Hwvu Zkc
+Shift 19: Ocz Lpdxf Wmjri Ajs Ephkn Jqzm Ocz Gvut Yjb
+Shift 20: Nby Kocwe Vliqh Zir Dogjm Ipyl Nby Futs Xia
+Shift 21: Max Jnbvd Ukhpg Yhq Cnfil Hoxk Max Etsr Whz
+Shift 22: Lzw Imauc Tjgof Xgp Bmehk Gnwj Lzw Dsrq Vgy
+Shift 23: Kyv Hlztb Sifne Wfo Aldgj Fmvi Kyv Crqp Ufx
+Shift 24: Jxu Gkysa Rhemd Ven Zkcfi Eluh Jxu Bqpo Tew
+Shift 25: Iwt Fjxrz Qgdlc Udm Yjbeh Dktg Iwt Apon Sdv
+
+Our decrypted message is -->> The Quick Brown Fox Jumps Over The Lazy Dog
