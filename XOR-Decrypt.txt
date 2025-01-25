@@ -1,0 +1,26 @@
+import base64
+
+# Given ciphertext in base64
+ciphertext_base64 = "Jw0KBlIMAEUXHRdFKyoxVRENEgkPEBwCFkQ="
+
+# Passphrase to decrypt
+passphrase = "secure"
+
+# Convert ciphertext from base64 to bytes
+ciphertext_bytes = base64.b64decode(ciphertext_base64)
+
+# Convert passphrase to bytes
+passphrase_bytes = passphrase.encode()
+
+# XOR operation
+decrypted_bytes = bytearray()
+for i in range(len(ciphertext_bytes)):
+    decrypted_bytes.append(ciphertext_bytes[i] ^ passphrase_bytes[i % len(passphrase_bytes)])
+
+# Convert decrypted bytes to string
+decrypted_string = decrypted_bytes.decode()
+
+print(decrypted_string)
+
+------------------------------------------
+Printed Answer: This is the XOR challenge!
